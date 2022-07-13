@@ -8,4 +8,4 @@ jobs:
         id: step01
         uses: ayachensiyuan/grantGithubActionJobID@v1.1
         with:
-          ['run-id']: ${{ github.run_id }}
+          run-id: ${{ github.run_id }}
