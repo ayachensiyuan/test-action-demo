@@ -7,3 +7,5 @@ jobs:
       - name: start01
         id: step01
         uses: ayachensiyuan/grantGithubActionJobID@v1.1
+        with:
+          run-id: ${{ github.run_id }}
