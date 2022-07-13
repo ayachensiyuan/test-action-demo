@@ -7,5 +7,3 @@ jobs:
       - name: start01
         id: step01
         uses: ayachensiyuan/grantGithubActionJobID@v1.1
-      - name: start02
-        run: echo "The job-id was ${{ steps.step01.outputs['job-id'] }}"
