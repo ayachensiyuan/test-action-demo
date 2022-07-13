@@ -7,7 +7,7 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v2
-      - uses: ayachensiyuan/grantGithubActionJobID@v1.1
+      - uses: ayachensiyuan/grantGithubActionJobID@master
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
