@@ -12,3 +12,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           run-id: ${{ github.run_id }}
+          run-attempt: ${{ github.run_attempt }}
