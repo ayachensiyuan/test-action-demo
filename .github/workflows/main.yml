@@ -2,7 +2,7 @@ name: 'get job id'
 on: [push]
 
 jobs:
-  get-job-id:
+  getJobId:
     runs-on: ubuntu-latest
     name: getJobId
     outputs:
