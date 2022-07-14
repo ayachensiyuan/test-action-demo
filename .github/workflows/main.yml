@@ -7,6 +7,12 @@ jobs:
     name: getJobId
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - run: npm ci
+      - run: npm test
       - name: set id
         id: setId
         uses: ayachensiyuan/get-action-job-id@main
@@ -17,20 +23,4 @@ jobs:
           run-attempt: ${{ github.run_attempt }}
       - name: get id
         run: echo "the job id is ${{ steps.setId.outputs.jobId }}"
-
-  getJobId2:
-    runs-on: ubuntu-latest
-    name: getJobId2
-    steps:
-      - uses: actions/checkout@v2
-      - name: set id
-        id: setId2
-        uses: ayachensiyuan/get-action-job-id@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          run-id: ${{ github.run_id }}
-          run-attempt: ${{ github.run_attempt }}
-      - name: get id
-        run: echo "the job id is ${{ steps.setId2.outputs.jobId }}"
 
