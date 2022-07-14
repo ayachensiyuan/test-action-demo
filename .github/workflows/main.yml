@@ -4,7 +4,7 @@ on: [push]
 jobs:
   get-job-id:
     runs-on: ubuntu-latest
-    name: get job id1
+    name: get-job-id
     steps:
       - uses: actions/checkout@v2
       - uses: ayachensiyuan/get-action-job-id@main
@@ -15,7 +15,7 @@ jobs:
           run-attempt: ${{ github.run_attempt }}
   get-job-id2:
     runs-on: ubuntu-latest
-    name: get job id2
+    name: get-job-id2
     steps:
       - uses: actions/checkout@v2
       - uses: ayachensiyuan/get-action-job-id@main
