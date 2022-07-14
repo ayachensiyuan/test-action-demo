@@ -5,6 +5,8 @@ jobs:
   get-job-id:
     runs-on: ubuntu-latest
     name: get-job-id
+    outputs:
+      jobId: ${{ steps.setId.output.jobId }}
     steps:
       - uses: actions/checkout@v2
       - name: set id
@@ -16,6 +18,6 @@ jobs:
           run-id: ${{ github.run_id }}
           run-attempt: ${{ github.run_attempt }}
       - name: get id
-        run: echo "the job id is ${{ steps.setId.output }}"
+        run: echo "the job id is ${{ needs.get-job-id.outputs.jobId }}"
 
 
