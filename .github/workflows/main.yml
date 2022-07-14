@@ -7,6 +7,9 @@ jobs:
     name: get job id
     steps:
       - uses: actions/checkout@v2
+      - name: My action
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: ayachensiyuan/get-action-job-id@main
         with:
           run-id: ${{ github.run_id }}
