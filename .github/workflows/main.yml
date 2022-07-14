@@ -10,4 +10,3 @@ jobs:
       - uses: ayachensiyuan/get-action-job-id@main
         with:
           run-id: ${{ github.run_id }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
