@@ -13,3 +13,14 @@ jobs:
         with:
           run-id: ${{ github.run_id }}
           run-attempt: ${{ github.run_attempt }}
+  get-job-id2:
+    runs-on: ubuntu-latest
+    name: get job id
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ayachensiyuan/get-action-job-id@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          run-id: ${{ github.run_id }}
+          run-attempt: ${{ github.run_attempt }}
