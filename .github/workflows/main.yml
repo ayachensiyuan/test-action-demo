@@ -2,6 +2,11 @@ name: 'get job id'
 on: [push]
 
 jobs:
+  set-job-index:
+    runs-on: ubuntu-latest
+    name: set index
+    env:
+      CURRENT_JOB_ID_INDEX: 0
   get-job-id:
     runs-on: ubuntu-latest
     name: get job id1
