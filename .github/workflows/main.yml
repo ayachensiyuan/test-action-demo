@@ -1,10 +1,10 @@
-name: say hello
+name: 'get job id'
 on: [push]
 
 jobs:
-  hello_world_job:
+  get-job-id:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: get job id
     steps:
       - uses: actions/checkout@v2
       - uses: ayachensiyuan/get-action-job-id@main
