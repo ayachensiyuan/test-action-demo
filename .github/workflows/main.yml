@@ -7,15 +7,9 @@ jobs:
     name: getJobId
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: 'npm'
-      - run: npm ci
-      - run: npm test
       - name: set id
         id: setId
-        uses: ayachensiyuan/get-action-job-id@main
+        uses: ayachensiyuan/get-action-job-id@v1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
