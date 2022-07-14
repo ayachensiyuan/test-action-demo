@@ -8,19 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ayachensiyuan/get-action-job-id@main
+        id: setId
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           run-id: ${{ github.run_id }}
           run-attempt: ${{ github.run_attempt }}
-  get-job-id2:
-    runs-on: ubuntu-latest
-    name: get-job-id2
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ayachensiyuan/get-action-job-id@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          run-id: ${{ github.run_id }}
-          run-attempt: ${{ github.run_attempt }}
+      - name: get id
+        run: echo ${{ steps.setId.output.job-id }}
+
+
