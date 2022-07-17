@@ -9,12 +9,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: set id
         id: setId
-        uses: ayachensiyuan/get-action-job-id@main
+        uses: ayachensiyuan/get-action-job-id@v1.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          run-id: ${{ github.run_id }}
-          run-attempt: ${{ github.run_attempt }}
+          job-name: getJobId
       - name: get id
         run: echo "the job id is ${{ steps.setId.outputs.jobId }}"
 
