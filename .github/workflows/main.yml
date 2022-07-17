@@ -4,7 +4,11 @@ on: [push]
 jobs:
   getJobId:
     runs-on: ubuntu-latest
-    name: getJobId
+    name: ${{ matrix.cases }}
+    strategy:
+      fail-fast: true
+      matrix: 
+        cases: ['case1', 'case2', 'case3', 'case4']
     steps:
       - uses: actions/checkout@v2
       - name: set id
@@ -13,7 +17,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          job-name: getJobId
+          job-name: ${{ matrix.cases }}
       - name: get id
         run: echo "the job id is ${{ steps.setId.outputs.jobId }}"
 
