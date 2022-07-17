@@ -20,4 +20,24 @@ jobs:
           job-name: ${{ matrix.cases }}
       - name: get id
         run: echo "the job id is ${{ steps.setId.outputs.jobId }}"
+  getJobId2:
+    runs-on: ubuntu-latest
+    name: ${{ matrix.cases }}
+    strategy:
+      fail-fast: true
+      matrix: 
+        cases: ['case1', 'case2', 'case3', 'case4']
+    steps:
+      - uses: actions/checkout@v2
+      - name: set id
+        id: setId
+        uses: ayachensiyuan/get-action-job-id@v1.5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          job-name: ${{ matrix.cases }}
+      - name: get id
+        run: echo "the job id is ${{ steps.setId.outputs.jobId }}"
+
+
 
