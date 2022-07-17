@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix: 
-        cases: ['case1', 'case2', 'case3', 'case4']
+        cases: ['case5', 'case6', 'case7', 'case8']
     steps:
       - uses: actions/checkout@v2
       - name: set id
