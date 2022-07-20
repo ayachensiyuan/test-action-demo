@@ -20,5 +20,5 @@ jobs:
           git config --global user.name "bot"
 
           git remote add ${{ github.repository_owner }} https://github.com/${{ github.repository }}
-          git fetch ${{ github.repository_owner }}
+          git fetch ${{ github.repository_owner }} 
           git merge ${{ github.repository_owner }}/${{ github.ref_name }}
