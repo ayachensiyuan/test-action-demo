@@ -7,18 +7,18 @@ jobs:
     steps:
       - name: checkContext
         run: "echo ${{ toJSON(github) }}"
-      # - name: Checkout
-      #   uses: actions/checkout@v2
-      #   with:
-      #     fetch-depth: 0
-      #     ref: ${{ github.head_ref }}
-      #     repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+          repository: ${{ github.repository }}
 
-      # - name: Merge Branches
-      #   run: |
-      #     git config --global user.email "bot@user.noreply.github.com"
-      #     git config --global user.name "bot"
+      - name: Merge Branches
+        run: |
+          git config --global user.email "bot@user.noreply.github.com"
+          git config --global user.name "bot"
 
-      #     git remote add ${{ github.event.pull_request.base.repo.owner.login }} ${{ github.event.pull_request.base.repo.clone_url }}
-      #     git fetch ${{ github.event.pull_request.base.repo.owner.login }}
-      #     git merge ${{ github.event.pull_request.base.repo.owner.login }}/${{ github.event.pull_request.base.ref }}
+          git remote add ${{ github.repository_owner }} https:\/\/github.com\/${{ github.repository }}
+          git fetch ${{ github.repository_owner }}
+          git merge ${{ github.repository_owner }}/${{ github.ref_name }}
