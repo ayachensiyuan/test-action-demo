@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkContext
-        run: "echo ${{ toJSON(github) }}"
+        run: "echo '${{ toJSON(github) }}'"
       - name: Checkout
         uses: actions/checkout@v2
         with:
