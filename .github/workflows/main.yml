@@ -3,6 +3,7 @@ on: [push, workflow_dispatch, pull_request]
 
 jobs:
   getJobId:
+    if: ${{  github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - name: checkContext
@@ -22,3 +23,25 @@ jobs:
           git remote add ${{ github.repository_owner }} https://github.com/${{ github.repository }}
           git fetch ${{ github.repository_owner }} 
           git merge ${{ github.repository_owner }}/${{ github.ref_name }}
+          
+  getJobId2:
+    if: ${{  github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkContext
+        run: "echo '${{ toJSON(github) }}'"
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          repository: ${{ github.repository }}
+
+      - name: Merge Branches
+        run: |
+          git config --global user.email "bot@user.noreply.github.com"
+          git config --global user.name "bot"
+
+          git remote add ${{ github.repository_owner }} https://github.com/${{ github.repository }}
+          git fetch ${{ github.repository_owner }} 
+          git merge ${{ github.repository_owner }}/${{ github.head_ref }}
