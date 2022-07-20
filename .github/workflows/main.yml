@@ -1,43 +1,24 @@
 name: 'get job id'
-on: [push]
+on: [push, workflow_dispatch, pull_request]
 
 jobs:
   getJobId:
     runs-on: ubuntu-latest
-    name: ${{ matrix.cases }}
-    strategy:
-      fail-fast: true
-      matrix: 
-        cases: ['case1', 'case2', 'case3', 'case4']
     steps:
-      - uses: actions/checkout@v2
-      - name: set id
-        id: setId
-        uses: ayachensiyuan/get-action-job-id@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          job-name: ${{ matrix.cases }}
-      - name: get id
-        run: echo "the job id is ${{ steps.setId.outputs.jobId }}"
-  getJobId2:
-    runs-on: ubuntu-latest
-    name: ${{ matrix.cases }}
-    strategy:
-      fail-fast: true
-      matrix: 
-        cases: ['case1', 'case2', 'case7', 'case8']
-    steps:
-      - uses: actions/checkout@v2
-      - name: set id
-        id: setId
-        uses: ayachensiyuan/get-action-job-id@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          job-name: ${{ matrix.cases }}
-      - name: get id
-        run: echo "the job id is ${{ steps.setId.outputs.jobId }}"
+      - name: checkContext
+        run: "echo ${{ toJSON(github) }}"
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
+      #     ref: ${{ github.head_ref }}
+      #     repository: ${{ github.event.pull_request.head.repo.full_name }}
 
+      # - name: Merge Branches
+      #   run: |
+      #     git config --global user.email "bot@user.noreply.github.com"
+      #     git config --global user.name "bot"
 
-
+      #     git remote add ${{ github.event.pull_request.base.repo.owner.login }} ${{ github.event.pull_request.base.repo.clone_url }}
+      #     git fetch ${{ github.event.pull_request.base.repo.owner.login }}
+      #     git merge ${{ github.event.pull_request.base.repo.owner.login }}/${{ github.event.pull_request.base.ref }}
