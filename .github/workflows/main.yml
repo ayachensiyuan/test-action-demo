@@ -11,7 +11,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.ref_name }}
           repository: ${{ github.repository }}
 
       - name: Merge Branches
@@ -21,4 +21,4 @@ jobs:
 
           git remote add ${{ github.repository_owner }} https://github.com/${{ github.repository }}
           git fetch ${{ github.repository_owner }}
-          git merge ${{ github.repository_owner }}/${{ github.head_ref }}
+          git merge ${{ github.repository_owner }}/${{ github.ref_name }}
