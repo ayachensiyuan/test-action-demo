@@ -1,5 +1,5 @@
 name: 'get job id'
-on: [push, workflow_dispatch, pull_request]
+on: [workflow_dispatch, pull_request]
 
 jobs:
   getJobId:
