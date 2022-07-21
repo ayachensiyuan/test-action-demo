@@ -1,30 +1,28 @@
-name: put elephone in to fridge
+name: 'put elephone in to fridge'
 on: [push, pull_request]
-
 jobs:
-  # first job
-  prepareEle:  
-		runs-on: ubuntu-latest
-		steps:
-			- name: go to zoo
-      	run: "echo 'find elephant in the zoo'"
+  prepareEle:   # first job
+    runs-on: ubuntu-latest
+    steps:
+      - name: go to zoo
+        run: "echo 'find elephant in the zoo'"
       - name: get ele
-      	run: "echo 'elephant is ready'"
-      	
+        run: "echo 'elephant is ready'"
+        
   prepareFridge: # second job
-  			runs-on: ubuntu-latest
-		steps:
-			- name: buy fridge
-      	run: "echo 'go to buy fridge'"
+    runs-on: ubuntu-latest
+    steps:
+      - name: buy fridge
+        run: "echo 'go to buy fridge'"
       - name: standing by
-      	run: "echo 'fridge is on power, temperature is cool'"
+        run: "echo 'fridge is on power, temperature is cool'"
   
   putEleIn: #thirid job
-  		runs-on: ubuntu-latest
-		steps:
-			- name: open the fridge
-				run: "echo 'fridge is open'"
-			- name: put ele in
-				run: "echo 'ele  in'"
-			- name: close the door
-				run: "echo 'door close, finish!'"
+    runs-on: ubuntu-latest
+    steps:
+      - name: open the fridge
+        run: "echo 'fridge is open'"
+      - name: put ele in
+        run: "echo 'ele  in'"
+      - name: close the door
+        run: "echo 'door close, finish!'"
