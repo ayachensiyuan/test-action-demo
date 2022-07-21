@@ -1,0 +1,16 @@
+name: get job id run test
+on: [push]
+jobs:
+  get-job-id-1: 
+    runs-on: ubuntu-latest
+    name: foo
+    steps:
+      - run: "echo '${{ github }}'"
+
+  get-job-id-2: 
+    runs-on: ubuntu-latest
+    steps:
+      - run: "echo '${{ github }}'"
+
+
+  
