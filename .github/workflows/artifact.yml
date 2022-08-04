@@ -1,0 +1,11 @@
+name: 'artifact demo'
+on: [workflow_dispatch, pull_request, push]
+
+jobs:
+  artifact test:
+    runs-on: ubuntu:latest
+    steps:
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: uploadData/
