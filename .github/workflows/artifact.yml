@@ -5,8 +5,14 @@ jobs:
   artifact-test:
     runs-on: ubuntu-latest
     steps:
-      - run: 'pwd'
+      - run: |
+        mkdir -p path/to/dir-1
+        mkdir -p path/to/dir-2
+        mkdir -p path/to/dir-3    
+        echo "Lorem ipsum dolor sit amet" > path/to/dir-1/file1.txt
+        echo "Hello world from file #2" > path/to/dir-2/file2.txt
+        echo "This is a going to be a test for a large enough file that should get compressed with GZip. The @actions/artifact package uses GZip to upload files. This text should have a compression ratio greater than 100% so it should get uploaded using GZip" > path/to/dir-3/gzip.txt
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: test-action-demo/uploadData/
+          path: path/to/
