@@ -5,6 +5,13 @@ jobs:
   artifact-test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+          repository: ${{ github.repository }}
+
       - name: create file
         run: |
           mkdir -p path/to/dir-1
@@ -17,4 +24,4 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: path/to/
+          path: /
